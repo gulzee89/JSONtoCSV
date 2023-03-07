@@ -6,12 +6,12 @@ phases:
     commands:
       - echo "Installing dependencies..."
       - echo "No dependency"
-      - mkdir lib
+      - mkdir lib 
   build:
     commands:
       - echo "Zipping deployment package..."
       - cd lib
-      - zip -r ../deployment_package.zip .
+      - zip -r ../deployment_package.zip . -i .
       - cd ..
       - zip -g deployment_package.zip codefile.py
   post_build:
