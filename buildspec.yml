@@ -6,6 +6,7 @@ phases:
     commands:
       - echo "Installing dependencies..."
       - echo "No dependency"
+      - mkdir lib
   build:
     commands:
       - echo "Zipping deployment package..."
