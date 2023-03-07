@@ -1,0 +1,20 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - echo "Installing dependencies..."
+      - echo "No dependency"
+  build:
+    commands:
+      - echo "Zipping deployment package..."
+      - cd lib
+      - zip -r ../deployment_package.zip .
+      - cd ..
+      - zip -g deployment_package.zip codefile.py
+  post_build:
+    commands:
+      - echo "Updating lambda Function..."
+      - aws lambda update-function-code --function-name JSON2CSV --zip-file fileb://deployment_package.zip
+      - echo "DONE!!"
